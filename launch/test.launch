@@ -1,0 +1,11 @@
+<launch>
+  <node pkg="map_server" type="map_server" name="map_server" args="$(find fake_laser_in_map)/maps/my_map_1.yaml"/>
+
+  
+  <node pkg="rviz" type="rviz" name="rviz" args="-d $(find fake_laser_in_map)/launch/view.rviz"/>
+  
+  <node pkg="fake_laser_in_map" type="fake_laser_in_map_node" name="fake_laser_in_map_node" output="screen"/>
+  
+  <node pkg="tf" type="static_transform_publisher" name="map_broadcaster" args="0 0 0 0 0 0 /map /odom 100" />
+
+</launch>
